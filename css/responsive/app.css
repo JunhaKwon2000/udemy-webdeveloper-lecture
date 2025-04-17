@@ -1,0 +1,66 @@
+body {
+    font-family: 'Open Sans', sans-serif;
+}
+
+h1 {
+    font-size: 6em;
+    text-align: center;
+}
+
+nav {
+    font-size: 1.5em;
+}
+
+ul,
+li {
+    display: inline;
+    margin: 0;
+    padding: 0;
+}
+
+/* width: changes when the width of the viewport becomes exactly 800px */
+/* use min or max! */
+/* multiple conditions can be applied */
+@media (min-width: 600px) and (max-width: 800px) {
+    h1 {
+        color: purple;
+    }
+}
+
+/* more common */
+@media (max-width: 1000px) {
+    h1 {
+        color: orange;
+    }
+}
+
+@media (max-width: 500px) {
+    h1 {
+        color: red;
+    }
+}
+
+
+/* other options */
+h1 {
+    color: red;
+}
+
+@media (min-width: 700px) {
+    h1 {
+        color: orange;
+    }
+}
+
+@media (min-width: 1000px) {
+    h1 {
+        color: lime;
+    }
+}
+
+/* when you rotate the screen(perhaps in phones) */
+@media (orientation: landscape) {
+    body {
+        background-color: blue;
+    }
+}
