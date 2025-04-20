@@ -1,0 +1,8 @@
+.poke-tag {
+    display: inline-block;
+    text-align: center;
+}
+
+.poke-tag .poke-img {
+    display: block;
+}

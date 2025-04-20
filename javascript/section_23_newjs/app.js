@@ -42,7 +42,7 @@ const obj2 = {
 }
 const obj3 = { ...obj1, ...obj2 }
 console.log(obj3);
-// object spreading can be used to copy objects, and add some more kry-values to them
+// object spreading can be used to copy objects, and add some more key-values to them
 const dataFromForm = {
     email: 'junharoket@naver.com',
     password: 'youandI31@',
@@ -51,8 +51,8 @@ const dataFromForm = {
 const newUser = { ...dataFromForm, id: 123874182, isAdmin: false }; // combining user provided info with inner-secret info
 console.log(newUser);
 
-// rest: collect all as an actual array
-// it is similar with thee argument, but the core difference is that argument is a array looking not-array, but rest is an actual array
+// rest: collect all as an *actual array*
+// it is similar with the argument, but the core difference is that argument is a array looking not-array, but rest is an actual array
 // so, argument can't use array callbakcs, methods, => when rest can
 function sum(...nums) {
     return nums.reduce((total, n) => total + n);
@@ -65,3 +65,72 @@ function raceResults(gold, silver, ...everybodyElse) {
     console.log(`And thanks to: ${everybodyElse}`);
 }
 raceResults('Jake', 'Paul', 'Lucas', 'Samantha', 'Lexy');
+
+
+// destructing from an array: singling out some values from an array
+const score = [140, 150, 160, 187, 194, 168];
+const [s1, s2, s3] = score // alocate 0, 1, 2 index of score to seperate variable s1, s2, s3
+console.log(s1, s2, s3);
+const [s4, s5, ...remains] = score; // we can use ... syntax to allocate the rest
+console.log(s4, s5, remains); // remains becomes an array
+
+
+// destucting from an obejct: same as destructing from an array but it is not about order
+const user = {
+    email: 'junharoket@naver.com',
+    password: 'youandI31@',
+    firstName: 'Junha',
+    lastName: 'Kwon',
+    born: 2000,
+    died: 'Not DEAD',
+    bio: 'learning front/backend',
+    city: 'Anyang',
+}
+const { email, city, bio } = user; // the variable name should match the key from the object
+console.log(email, city, bio);
+const { born: birthYear } = user; // if we want to change the name of the variable, we can use :
+console.log(birthYear);
+const user2 = {
+    email: 'junharoket@hanmail.net',
+    password: 'rnjswnsgk31@',
+    firstName: 'Jake',
+    lastName: 'Sully',
+}
+// we can also include default values from the variables
+// by setting some variables default value, we can check whether the variable has the key or not 
+const { died: deathYear = 'N/A' } = user; // it will give me the actual died value, since the object has the key died
+const { died = 'N/A' } = user2; // user2 doesn'y have died, so it will give me the default value
+console.log(deathYear);
+console.log(died);
+
+
+
+// destructing parameters: frequently used with objects, and we can destruct a parameter directly in a function
+function fullName({ firstName, lastName }) {
+    return `${firstName} ${lastName}`;
+}
+console.log(fullName(user));
+const movies = [
+    {
+        title: 'Amadeus',
+        score: 79
+    },
+    {
+        title: 'Stand By Me',
+        score: 85
+    },
+    {
+        title: 'Parasite',
+        score: 95
+    },
+    {
+        title: 'Alien',
+        score: 90
+    }
+]
+const highMovies = movies.filter(({ score }) => score >= 90);
+console.log(highMovies);
+const myMovies = movies.map(({ title, score, year }) => {
+    return `${title} (${year}) is rated ${score}`;
+})
+console.log(myMovies);
