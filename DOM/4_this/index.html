@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <button>Click</button>
+    <button>Click</button>
+    <button>Click</button>
+
+    <h1>Click</h1>
+    <h1>Click</h1>
+    <h1>Click</h1>
+
+
+
+
+
+
+
+    <script>
+
+        function randomColor() {
+            const rgbList = [Math.floor(Math.random() * 255), Math.floor(Math.random() * 255), Math.floor(Math.random() * 255)];
+            const [c1, c2, c3] = rgbList;
+            return `rgb(${c1}, ${c2}, ${c3})`;
+        }
+
+        function colorize() {
+            this.style.backgroundColor = randomColor();
+            this.style.color = randomColor();
+        }
+
+        const buttons = document.querySelectorAll('button');
+        buttons.forEach(b => {
+            b.addEventListener('click', colorize);
+        })
+
+        const h1s = document.querySelectorAll('h1');
+        h1s.forEach(h => {
+            h.addEventListener('click', colorize);
+        })
+
+
+    </script>
+</body>
+</html>
