@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <button>Cilck</button>
+    <input type="text" name="" id="">
+
+
+    <script>
+        // Events
+        document.querySelector('button').addEventListener('click', (evt) => {
+            // alert('click');
+            console.log(evt);
+        })
+
+        // Keyboard Events
+        const inp = document.querySelector('input');
+        // inp.addEventListener('keydown', () => {
+        //     console.log('keyDown!');
+        // })
+        // inp.addEventListener('keyup', () => {
+        //     console.log('keyUp!');
+        // })
+
+        // inp.addEventListener('keydown', (evt) => {
+        //     console.log(evt.key); // focusing on the actual key value
+        //     console.log(evt.code); // focusing on the actual location of the key pressed(for universal language)
+        // })
+
+        window.addEventListener('keydown', (evt) => {
+            switch (evt.code) {
+                case 'ArrowUp':
+                    console.log("UP!");
+                    break;
+                case 'ArrowDown':
+                    console.log("Down!");
+                    break;    
+                default:
+                    console.log("ignored!");
+                    break;
+            }
+
+            // console.log(evt.code);
+        })
+
+
+
+
+    </script>
+</body>
+</html>

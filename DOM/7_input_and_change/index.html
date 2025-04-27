@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Type Below!</h1>
+    <form action="/dd">
+        <input type="text" name="" id="">
+    </form>
+
+
+
+
+    <script>
+        // change: detects changes when the content in the input whe focused and the content in the input when not focused changes
+        // not so useful
+        const inp = document.querySelector('input');
+        // inp.addEventListener('change', () => {
+        //     console.log('What?');
+            
+        // })
+
+        // input: detect changes in the input value
+        // can detect copy and paste
+        const h = document.querySelector('h1');
+        inp.addEventListener('input', () => {
+            h.textContent = inp.value;
+        })
+    </script>
+</body>
+</html>

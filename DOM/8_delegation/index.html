@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <h1>Event Delegation</h1>
+
+    <form action="/dogs" id="tweetForm">
+        <input type="text" name="username" placeholder="username">
+        <input type="text" name="tweet" placeholder="tweet">
+        <button>Post Tweet</button>
+    </form>
+
+    <h2>Tweets:</h2>
+    <ul id="tweets">
+        <li>I AM LI!!!</li>
+        <li>I AM LI!!!</li>
+        <p>aslkdjaslkdjaksl</p>
+    </ul>
+
+    
+
+    <script>
+        
+        const tweetForm = document.querySelector('#tweetForm');
+        const tweetsContainer = document.querySelector('#tweets');
+        tweetForm.addEventListener('submit', function (e) {
+            e.preventDefault();
+            const usernameInput = tweetForm.elements.username;
+            const tweetInput = tweetForm.elements.tweet;
+            addTweet(usernameInput.value, tweetInput.value)
+            usernameInput.value = '';
+            tweetInput.value = '';
+        });
+
+        const addTweet = (username, tweet) => {
+            const newTweet = document.createElement('li');
+            const bTag = document.createElement('b');
+            bTag.append(username)
+            newTweet.append(bTag);
+            newTweet.append(`- ${tweet}`)
+            tweetsContainer.append(newTweet);
+        }
+
+        // delegation
+        // if i add an eventlistener to an li, to make it delete when i click them, it is inly going to work for the li that were on the page when i loaded it
+        // if I click on the new li that were created by the form, it will not work
+        // so, in this case, we can add the eventlistener to the parent of the li, in this code the ul, and use the evt.target
+
+
+        // target refers to the actual element, just like selecting by const or let
+        // target.nodeName returns the actual type of the node, or tag, such as li, h1, ...
+        tweetsContainer.addEventListener('click', (evt) => {
+            console.log(evt);
+            if(evt.target.nodeName === 'LI') {
+                evt.target.remove();
+            }
+        })
+
+
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>My Form</h1>
+    <form action="/shelter" id="shelterForm">
+        <input type="text" name="" id="catName">
+        <button type="submit">Submit</button>
+    </form>
+
+    <h2>Cats</h2>
+    <ul id="cats"></ul>
+    
+    <script>
+        // Default behavior of the form is to redirect you to the location you specified
+        // This makes you leave the page, but most of the times you just want to fire the data, not leave the page
+        // preventDefault method prevents the default behavior of an event, and it is used most commonly for forms 
+        const form = document.querySelector('#shelterForm');
+        const input = document.querySelector('#catName');
+        const ul = document.querySelector('#cats');
+        form.addEventListener('submit', function (evt) {
+            evt.preventDefault();
+            const nameEl = document.createElement('li');
+            nameEl.textContent = input.value;
+            ul.appendChild(nameEl);
+            input.value = '';
+        })
+    </script>
+</body>
+</html>
